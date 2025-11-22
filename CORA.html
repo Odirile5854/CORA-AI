@@ -17,23 +17,36 @@
             --radius: 8px;
             --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
-        * {
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            min-height: 100vh;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
         }
+
         body {
             background: linear-gradient(135deg, var(--ibm-gray-90) 0%, var(--ibm-gray-80) 100%);
             color: white;
             min-height: 100vh;
+            min-width: 100vw;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
         /* Header */
         header {
             background: rgba(255, 255, 255, 0.05);
@@ -42,19 +55,23 @@
             padding: 20px 0;
             margin-bottom: 30px;
         }
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
+            width: 100vw;
             margin: 0 auto;
             padding: 0 20px;
+            box-sizing: border-box;
         }
+
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
         }
+
         .logo-icon {
             width: 50px;
             height: 50px;
@@ -66,15 +83,18 @@
             font-weight: bold;
             font-size: 24px;
         }
+
         .logo-text {
             font-size: 28px;
             font-weight: 600;
         }
+
         .logo-subtitle {
             font-size: 14px;
             color: var(--ibm-teal);
             margin-top: -5px;
         }
+
         .watsonx-badge {
             background: var(--ibm-purple);
             color: white;
@@ -83,13 +103,19 @@
             font-size: 12px;
             font-weight: 600;
         }
+
         /* Main Grid */
         .main-grid {
             display: grid;
             grid-template-columns: 320px 1fr 350px;
             gap: 25px;
-            margin-bottom: 40px;
+            width: 100vw;
+            height: calc(100vh - 120px); /* Adjust if header/footer height differs */
+            margin: 0;
+            min-height: 0;
+            box-sizing: border-box;
         }
+
         /* Panel Styles */
         .panel {
             background: rgba(255, 255, 255, 0.05);
@@ -98,7 +124,11 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 25px;
             overflow: hidden;
+            height: 100%;
+            box-sizing: border-box;
+            min-width: 0;
         }
+
         .panel-header {
             display: flex;
             justify-content: space-between;
@@ -107,16 +137,19 @@
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         .panel-title {
             font-size: 18px;
             font-weight: 600;
             color: white;
         }
+
         /* Skills Panel */
         .skills-grid {
             display: grid;
             gap: 15px;
         }
+
         .skill-card {
             background: rgba(255, 255, 255, 0.08);
             border-radius: var(--radius);
@@ -125,14 +158,17 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+
         .skill-card:hover {
             background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
         }
+
         .skill-card.active {
             background: rgba(0, 98, 255, 0.15);
             border-left-color: var(--ibm-teal);
         }
+
         .skill-icon {
             width: 40px;
             height: 40px;
@@ -144,22 +180,26 @@
             margin-bottom: 10px;
             font-size: 18px;
         }
+
         .skill-name {
             font-weight: 600;
             margin-bottom: 5px;
             font-size: 16px;
         }
+
         .skill-desc {
             font-size: 13px;
             color: #8C94A7;
             line-height: 1.4;
         }
+
         /* Chat Panel */
         .chat-container {
             display: flex;
             flex-direction: column;
-            height: 600px;
+            height: 100%;
         }
+
         .chat-messages {
             flex: 1;
             overflow-y: auto;
@@ -168,13 +208,16 @@
             border-radius: var(--radius);
             margin-bottom: 20px;
         }
+
         .message {
             margin-bottom: 20px;
             animation: fadeIn 0.3s ease;
         }
+
         .message.user {
             text-align: right;
         }
+
         .message-bubble {
             display: inline-block;
             padding: 15px 20px;
@@ -182,23 +225,28 @@
             max-width: 80%;
             text-align: left;
         }
+
         .message.user .message-bubble {
             background: var(--ibm-blue);
             border-bottom-right-radius: 5px;
         }
+
         .message.cora .message-bubble {
             background: rgba(255, 255, 255, 0.1);
             border-bottom-left-radius: 5px;
         }
+
         .message-time {
             font-size: 11px;
             color: #8C94A7;
             margin-top: 5px;
         }
+
         .chat-input-container {
             display: flex;
             gap: 10px;
         }
+
         .chat-input {
             flex: 1;
             background: rgba(255, 255, 255, 0.08);
@@ -210,16 +258,19 @@
             resize: none;
             height: 60px;
         }
+
         .chat-input:focus {
             outline: none;
             border-color: var(--ibm-blue);
         }
+
         /* Controls */
         .controls {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
+
         .btn {
             padding: 12px 24px;
             border: none;
@@ -232,25 +283,31 @@
             gap: 8px;
             font-size: 14px;
         }
+
         .btn-primary {
             background: var(--ibm-blue);
             color: white;
         }
+
         .btn-primary:hover {
             background: var(--ibm-blue-dark);
             transform: translateY(-2px);
         }
+
         .btn-secondary {
             background: rgba(255, 255, 255, 0.1);
             color: white;
         }
+
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
         }
+
         .btn-teal {
             background: var(--ibm-teal);
             color: white;
         }
+
         .btn-icon {
             width: 45px;
             height: 45px;
@@ -258,6 +315,7 @@
             justify-content: center;
             border-radius: 50%;
         }
+
         /* Status Panel */
         .status-item {
             background: rgba(255, 255, 255, 0.05);
@@ -266,21 +324,25 @@
             margin-bottom: 15px;
             border-left: 4px solid var(--ibm-teal);
         }
+
         .status-label {
             font-size: 12px;
             color: #8C94A7;
             margin-bottom: 5px;
         }
+
         .status-value {
             font-size: 16px;
             font-weight: 600;
         }
+
         .workflow-visual {
             background: rgba(255, 255, 255, 0.03);
             border-radius: var(--radius);
             padding: 20px;
             margin-top: 20px;
         }
+
         .workflow-step {
             display: flex;
             align-items: center;
@@ -290,6 +352,7 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
         }
+
         .step-number {
             width: 25px;
             height: 25px;
@@ -301,6 +364,7 @@
             font-size: 12px;
             font-weight: bold;
         }
+
         /* Business Impact Section */
         .impact-section {
             background: rgba(255, 255, 255, 0.05);
@@ -308,6 +372,7 @@
             padding: 30px;
             margin-top: 40px;
         }
+
         .impact-title {
             font-size: 24px;
             font-weight: 600;
@@ -315,11 +380,13 @@
             text-align: center;
             color: var(--ibm-teal);
         }
+
         .impact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+
         .impact-card {
             background: rgba(255, 255, 255, 0.08);
             border-radius: var(--radius);
@@ -327,23 +394,28 @@
             text-align: center;
             transition: transform 0.3s ease;
         }
+
         .impact-card:hover {
             transform: translateY(-5px);
         }
+
         .impact-icon {
             font-size: 40px;
             margin-bottom: 15px;
         }
+
         .impact-number {
             font-size: 32px;
             font-weight: 700;
             color: var(--ibm-teal);
             margin-bottom: 10px;
         }
+
         .impact-text {
             font-size: 16px;
             color: #8C94A7;
         }
+
         /* Footer */
         footer {
             background: rgba(255, 255, 255, 0.05);
@@ -352,27 +424,33 @@
             padding: 30px 0;
             margin-top: 50px;
         }
+
         .footer-content {
-            max-width: 1400px;
+            width: 100vw;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-sizing: border-box;
         }
+
         .footer-links {
             display: flex;
             gap: 20px;
         }
+
         .footer-link {
             color: #8C94A7;
             text-decoration: none;
             font-size: 14px;
             transition: color 0.3s;
         }
+
         .footer-link:hover {
             color: white;
         }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -386,25 +464,30 @@
         .pulse {
             animation: pulse 2s infinite;
         }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .main-grid {
                 grid-template-columns: 1fr;
+                height: auto;
             }
             .skills-panel, .status-panel {
                 display: none;
             }
         }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 15px;
             }
+
             .footer-content {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
             }
+
             .impact-grid {
                 grid-template-columns: 1fr;
             }
@@ -592,10 +675,12 @@
             </div>
         </div>
     </footer>
+    <!-- JavaScript unchanged from your prior code: paste here as is -->
     <script>
-        // ... [JavaScript from your post, UNCHANGED except for this single fix below]
-        // Fix: use `message.cora` instead of `message.casey` in relevant selectors!
-        // The rest of your script can stay the same!
+        // (Insert your script)
+        // For brevity and so this answer fits, reuse your existing <script> from your post
+        
+        // No JavaScript changes are needed for fullscreen/layout.
     </script>
     <!-- html2pdf bundle: converts HTML to PDF client-side -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
